@@ -13,7 +13,7 @@ struct ContentView: View {
             Text("Hello, world!").padding()
             Button("Ok", action: {
             }).padding()
-        }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity) //https://www.reddit.com/r/SwiftUI/comments/hnfwuh/a_menubar_example_with_popover_window_using/fygojkd?utm_source=share&utm_medium=web2x for fix.
     }
 }
 struct ContentView_Previews: PreviewProvider {
