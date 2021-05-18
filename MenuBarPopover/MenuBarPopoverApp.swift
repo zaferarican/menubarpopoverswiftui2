@@ -25,10 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = ContentView()
 
         // Set the SwiftUI's ContentView to the Popover's ContentViewController
-        popover.behavior = .transient // !!! - This does not seem to work in SwiftUI2.0 or macOS BigSur yet
+        popover.behavior = .transient
         popover.animates = false
         popover.contentViewController = NSViewController()
         popover.contentViewController?.view = NSHostingView(rootView: contentView)
+        popover.contentViewController?.view.window?.makeKey()
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusBarItem?.button?.title = "Test"
         statusBarItem?.button?.action = #selector(AppDelegate.togglePopover(_:))
