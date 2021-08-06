@@ -10,6 +10,10 @@ import SwiftUI
 @main
 struct MenuBarPopoverApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    init() {
+      AppDelegate.shared = self.appDelegate
+    }
+    /*  For #2 I followed the solution in https://stackoverflow.com/a/65789202/827681 */
     var body: some Scene {
         Settings{
             EmptyView()
@@ -19,7 +23,7 @@ struct MenuBarPopoverApp: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
     var popover = NSPopover.init()
     var statusBarItem: NSStatusItem?
-
+    static var shared : AppDelegate!
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         let contentView = ContentView()
